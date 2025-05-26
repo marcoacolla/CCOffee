@@ -83,6 +83,7 @@ class Pratos():
 prato1 = Pratos('Hambúrguer', 40)
 prato2 = Pratos('Batata Frita', 15)
 # teste de mudança
+#testando negocio do vscode
 root.mainloop()
 
 
