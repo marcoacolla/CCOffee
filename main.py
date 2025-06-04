@@ -1,3 +1,5 @@
 from cardapio import Cardapio
 
-print(Cardapio.cardapio["spaghetti"].preco)
+for item in Cardapio.cardapio:
+    acessItem = Cardapio.cardapio[item]
+    print(acessItem.nome)
