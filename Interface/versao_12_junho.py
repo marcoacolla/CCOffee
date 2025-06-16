@@ -2,7 +2,10 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import *
 from PIL import ImageTk, Image
+import os
 
+dirname = os.path.dirname(__file__)
+image_folder = os.path.join(dirname, 'interface_images')
 
 LARGEFONT =("Verdana", 25)
 
@@ -128,7 +131,7 @@ class Inserir_Comanda(tk.Frame):
             background_label_inicio.config(image=new_image_inicio)
             background_label_inicio.image = new_image_inicio  # Avoid garbage collection
 
-        image_path="/home/stella/Downloads/cafeteria(1).png"
+        image_path= os.path.join(image_folder, 'cafeteria(1).png')
 
         bg_inicio=fit_image_to_window(image_path, (700, 700))
         background_label_inicio = tk.Label(self, image = bg_inicio)
@@ -271,17 +274,17 @@ class Menu_Pedidos(tk.Frame):
         command = lambda : controller.show_frame(Pagar))
         pagar_btn.place(anchor='center', relx=0.6, rely=0.95)
 
-        cardapio_doces={'Torta de Limão':[23, '/home/stella/Downloads/torta_limao.png'], 'Sonho':[12, '/home/stella/Downloads/sonho.jpg'], 'Bolo3':[23, '/home/stella/Downloads/torta_limao.png'], 
-                'Bolo4':[12, '/home/stella/Downloads/sonho.jpg'], 'Bolo5':[23, '/home/stella/Downloads/torta_limao.png'], 'Bolo6':[12, '/home/stella/Downloads/sonho.jpg'], 
-                'Bolo7':[23, '/home/stella/Downloads/torta_limao.png'], 'Bolo8':[12, '/home/stella/Downloads/sonho.jpg'], 'Bolo9':[23, '/home/stella/Downloads/torta_limao.png'],
+        cardapio_doces={'Torta de Limão':[23, os.path.join(image_folder, 'torta_limao.png')], 'Sonho':[12, os.path.join(image_folder, 'sonho.png')], 'Bolo3':[23, os.path.join(image_folder, 'torta_limao.png')], 
+                'Bolo4':[12, os.path.join(image_folder, 'torta_limao.png')], 'Bolo5':[23, os.path.join(image_folder, 'torta_limao.png')], 'Bolo6':[12, os.path.join(image_folder, 'torta_limao.png')], 
+                'Bolo7':[23, os.path.join(image_folder, 'torta_limao.png')], 'Bolo8':[12, os.path.join(image_folder, 'torta_limao.png')], 'Bolo9':[23, os.path.join(image_folder, 'torta_limao.png')],
                 }
-        cardapio_salgados={'Salgado1':[23, '/home/stella/Downloads/torta_limao.png'], 'Salgado2':[12, '/home/stella/Downloads/sonho.jpg'], 'Salgado3':[23, '/home/stella/Downloads/torta_limao.png'], 
-                'Salgado4':[12, '/home/stella/Downloads/sonho.jpg'], 'Salgado5':[23, '/home/stella/Downloads/torta_limao.png'], 'Salgado6':[12, '/home/stella/Downloads/sonho.jpg'], 
-                'Salgado7':[23, '/home/stella/Downloads/torta_limao.png'], 'Salgado8':[12, '/home/stella/Downloads/sonho.jpg'], 'Salgado9':[23, '/home/stella/Downloads/torta_limao.png'],
+        cardapio_salgados={'Salgado1':[23, os.path.join(image_folder, 'torta_limao.png')], 'Salgado2':[12, os.path.join(image_folder, 'sonho.png')], 'Salgado3':[23, os.path.join(image_folder, 'torta_limao.png')], 
+                'Salgado4':[12, os.path.join(image_folder, 'sonho.png')], 'Salgado5':[23, os.path.join(image_folder, 'torta_limao.png')], 'Salgado6':[12, os.path.join(image_folder, 'sonho.png'), 
+                'Salgado7':[23, os.path.join(image_folder, 'torta_limao.png')], 'Salgado8':[12, os.path.join(image_folder, 'sonho.png')], 'Salgado9':[23, os.path.join(image_folder, 'torta_limao.png')],
                 }
-        cardapio_bebidas={'Bebida1':[23, '/home/stella/Downloads/torta_limao.png'], 'Bebida2':[12, '/home/stella/Downloads/sonho.jpg'], 'Bebida3':[23, '/home/stella/Downloads/torta_limao.png'], 
-                'Bebida4':[12, '/home/stella/Downloads/sonho.jpg'], 'Bebida5':[23, '/home/stella/Downloads/torta_limao.png'], 'Bebida6':[12, '/home/stella/Downloads/sonho.jpg'], 
-                'Bebida7':[23, '/home/stella/Downloads/torta_limao.png'], 'Bebida8':[12, '/home/stella/Downloads/sonho.jpg'], 'Bebida9':[23, '/home/stella/Downloads/torta_limao.png'],
+        cardapio_bebidas={'Bebida1':[23, os.path.join(image_folder, 'torta_limao.png')], 'Bebida2':[12, os.path.join(image_folder, 'sonho.png')], 'Bebida3':[23, os.path.join(image_folder, 'torta_limao.png')], 
+                'Bebida4':[12, os.path.join(image_folder, 'sonho.png')], 'Bebida5':[23, os.path.join(image_folder, 'torta_limao.png')], 'Bebida6':[12, os.path.join(image_folder, 'sonho.png')], 
+                'Bebida7':[23, os.path.join(image_folder, 'torta_limao.png')], 'Bebida8':[12, os.path.join(image_folder, 'sonho.png')], 'Bebida9':[23, os.path.join(image_folder, 'torta_limao.png')],
                 }
 
  
