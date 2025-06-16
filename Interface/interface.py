@@ -2,7 +2,10 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import *
 from PIL import ImageTk, Image
+import os
 
+dirname = os.path.dirname(__file__)
+image_folder = os.path.join(dirname, 'interface_images')
 
 LARGEFONT =("Verdana", 25)
 
@@ -116,7 +119,7 @@ class Inserir_Comanda(tk.Frame):
             background_label_inicio.config(image=new_image_inicio)
             background_label_inicio.image = new_image_inicio  # Avoid garbage collection
 
-        image_path="/home/stella/Downloads/cafeteria(1).png"
+        image_path= os.path.join(image_folder, 'cafeteria(1).png')
 
         bg_inicio=fit_image_to_window(image_path, (700, 700))
         background_label_inicio = tk.Label(self, image = bg_inicio)
@@ -189,7 +192,7 @@ class Menu_Pedidos(tk.Frame):
             background_label_menu.config(image=new_image_menu)
             background_label_menu.image = new_image_menu  # Avoid garbage collection
 
-        image_path="/home/stella/Downloads/cafeteria(2).jpg"
+        image_path=os.path.join(image_folder, 'cafeteria(2).png')
 
         bg_menu=fit_image_to_window(image_path, (700, 700))
         background_label_menu = tk.Label(frame_menu_pedidos, image = bg_menu)
@@ -233,9 +236,9 @@ class Menu_Pedidos(tk.Frame):
         voltar_inicio_btn.place(anchor='center', relx=0.5, rely=0.95)
 
 
-        pratos={'Torta de Limão':[23, '/home/stella/Downloads/torta_limao.png'], 'Sonho':[12, '/home/stella/Downloads/sonho.jpg'], 'Bolo3':[23, '/home/stella/Downloads/torta_limao.png'], 
-                'Bolo4':[12, '/home/stella/Downloads/sonho.jpg'], 'Bolo5':[23, '/home/stella/Downloads/torta_limao.png'], 'Bolo6':[12, '/home/stella/Downloads/sonho.jpg'], 
-                'Bolo7':[23, '/home/stella/Downloads/torta_limao.png'], 'Bolo8':[12, '/home/stella/Downloads/sonho.jpg'], 'Bolo9':[23, '/home/stella/Downloads/torta_limao.png'],
+        pratos={'Torta de Limão':[23, os.path.join(image_folder, 'torta_limao.png')], 'Sonho':[12, os.path.join(image_folder, 'sonho.png')], 'Bolo3':[23, os.path.join(image_folder, 'torta_limao.png')], 
+                'Bolo4':[12, os.path.join(image_folder, 'torta_limao.png')], 'Bolo5':[23, os.path.join(image_folder, 'torta_limao.png')], 'Bolo6':[12, os.path.join(image_folder, 'torta_limao.png')], 
+                'Bolo7':[23, os.path.join(image_folder, 'torta_limao.png')], 'Bolo8':[12, os.path.join(image_folder, 'torta_limao.png')], 'Bolo9':[23, os.path.join(image_folder, 'torta_limao.png')],
                 }
 
  
@@ -253,7 +256,7 @@ class Menu_Pedidos(tk.Frame):
                 doces_btn=tk.Button(frame_escolha_doces, text = 'Doces', font = ('calibre',15), bg="#F8D5C6", fg='#CE724B',
                 command = lambda : controller.show_frame_cardapio(frame_pratos))
                 doces_btn.pack(side='bottom')
-                image_doce=Image.open('/home/stella/Downloads/doces.png')
+                image_doce=Image.open(os.path.join(image_folder, 'doces.png'))
                 resized_image_doce=image_doce.resize((288,162))
                 bg_doce=ImageTk.PhotoImage(resized_image_doce)
                 label_imagem_doce=tk.Label(frame_escolha_doces, image=bg_doce)
@@ -266,7 +269,7 @@ class Menu_Pedidos(tk.Frame):
                 salgados_btn=tk.Button(frame_escolha_salgados, text = 'Salgados', font = ('calibre',15), bg="#F8D5C6", fg='#CE724B',
                 command = lambda : controller.show_frame_cardapio(frame_pratos))
                 salgados_btn.pack(side='bottom')
-                image_salgado=Image.open('/home/stella/Downloads/salgados.png')
+                image_salgado=Image.open(os.path.join(image_folder, 'salgados.png'))
                 resized_image_salgado=image_salgado.resize((288,162))
                 bg_salgado=ImageTk.PhotoImage(resized_image_salgado)
                 label_imagem_salgado=tk.Label(frame_escolha_salgados, image=bg_salgado)
@@ -278,7 +281,7 @@ class Menu_Pedidos(tk.Frame):
                 bebidas_btn=tk.Button(frame_escolha_bebidas, text = 'Bebidas', font = ('calibre',15), bg="#F8D5C6", fg='#CE724B',
                 command = lambda : controller.show_frame_cardapio(frame_pratos))
                 bebidas_btn.pack(side='bottom')
-                image_bebidas=Image.open('/home/stella/Downloads/bebidas.png')
+                image_bebidas=Image.open(os.path.join(image_folder, 'bebidas.png'))
                 resized_image_bebidas=image_bebidas.resize((288,162))
                 bg_bebidas=ImageTk.PhotoImage(resized_image_bebidas)
                 label_imagem_bebidas=tk.Label(frame_escolha_bebidas, image=bg_bebidas)
