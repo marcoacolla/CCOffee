@@ -6,15 +6,15 @@ from PIL import ImageTk, Image
 
 class tkinterApp(tk.Tk):
     
-    # __init__ function for class tkinterApp 
+    # Construtor do tkinterApp 
     def __init__(self, *args, **kwargs): 
         
         global inicio
 
-        # __init__ function for class Tk
+        # Construtor do Tk
         tk.Tk.__init__(self, *args, **kwargs)
 
-        # creating a container
+        # criando um a 'container'
         container = tk.Frame(self) 
         container.pack(side = "top", fill = "both", expand = True) 
         container.config(width=1000, height=800)
@@ -23,23 +23,22 @@ class tkinterApp(tk.Tk):
         container.grid_rowconfigure(0, weight = 1)
         container.grid_columnconfigure(0, weight = 1)
  
-        # initializing frames to an empty array
+        # inicializando frames
         self.frames = {}  
  
-        # iterating through a tuple consisting of the different page layouts
+        # colocando os frames correspondentes aos diferentes layouts de página
         
         for F in (Inserir_Nome, Menu_Pedidos, Pagar, Obrigada):
  
             frame = F(container, self)
-            # initializing frame of that object from Inserir_Nome, Menu_Pedidos, Pagar and Obrigada respectively with for loop
+            # Inicializando o frame de cada um
             self.frames[F] = frame 
             frame.grid(row = 0, column = 0, sticky ="nsew")
 
         inicio=True
         self.show_frame(Inserir_Nome)
         
-    # to display the current frame passed as
-    # parameter
+    # Função mostrar frame, usa as classes como parâmetro
     def show_frame(self, cont):
 
         frame = self.frames[cont]
@@ -88,7 +87,7 @@ class tkinterApp(tk.Tk):
                 label_pedido.pack(side='top', pady=4, padx=4, anchor='nw')
         
  
-# Inserir_Nome window frame
+# 'Inserir_Nome' window frame
 class Inserir_Nome(tk.Frame):
     def __init__(self, parent, controller): 
         tk.Frame.__init__(self, parent)
@@ -102,17 +101,17 @@ class Inserir_Nome(tk.Frame):
         self.grid_columnconfigure(0, weight=1)
         
         def fit_image_to_window(image_path, window_size):
-            # Load the image
+            # Carrega a imagem na tela
             image_inicio=Image.open(image_path)
             image_width, image_height = image_inicio.size
             
-            # Calculate the aspect ratio
+            # Calcula o aspect ratio
             aspect_ratio = image_width / image_height
             
-            # Get the window size
+             # Pega o tamanho da tela do usuário
             window_width, window_height = window_size
             
-            # Calculate new size keeping the aspect ratio
+            # Calcula novo tamanho com o mesmo aspect ratio
             if (window_width / window_height) > aspect_ratio:
                 new_width = int(window_height * aspect_ratio)
                 new_height = window_height
@@ -120,7 +119,7 @@ class Inserir_Nome(tk.Frame):
                 new_width = window_width
                 new_height = int(window_width / aspect_ratio)
             
-            # Resize the image
+            # Reescala a imagem
             resized_image = image_inicio.resize((new_width, new_height), Image.LANCZOS)
             return ImageTk.PhotoImage(resized_image)
 
@@ -128,7 +127,7 @@ class Inserir_Nome(tk.Frame):
             new_image_inicio = fit_image_to_window(image_path, (event.width, event.height))
             background_label_inicio.pack(fill=BOTH, expand = YES)
             background_label_inicio.config(image=new_image_inicio)
-            background_label_inicio.image = new_image_inicio  # Avoid garbage collection
+            background_label_inicio.image = new_image_inicio  # Pra evitar acumulo de lixo
 
         image_path="/home/stella/Downloads/cafeteria(1).png"
 
@@ -156,7 +155,7 @@ class Inserir_Nome(tk.Frame):
         confirmar_btn.pack(side='bottom')
 
  
-# Menu Pedidos window frame
+# 'Menu Pedidos' window frame
 class Menu_Pedidos(tk.Frame):
     
     def __init__(self, parent, controller):
@@ -171,17 +170,17 @@ class Menu_Pedidos(tk.Frame):
         pedidos_da_comanda = {}
 
         def fit_image_to_window(image_path, window_size):
-            # Load the image
+            # Carrega a imagem na tela
             image_menu=Image.open(image_path)
             image_width, image_height = image_menu.size
             
-            # Calculate the aspect ratio
+            # Calcula o aspect ratio
             aspect_ratio = image_width / image_height
             
-            # Get the window size
+            # Pega o tamanho da tela do usuário
             window_width, window_height = window_size
             
-            # Calculate new size keeping the aspect ratio
+            # Calcula novo tamanho com o mesmo aspect ratio
             if (window_width / window_height) > aspect_ratio:
                 new_width = int(window_height * aspect_ratio)
                 new_height = window_height
@@ -189,7 +188,7 @@ class Menu_Pedidos(tk.Frame):
                 new_width = window_width
                 new_height = int(window_width / aspect_ratio)
 
-            # Resize the image
+            # Reescala a imagem
             resized_image = image_menu.resize((new_width, new_height), Image.LANCZOS)
             return ImageTk.PhotoImage(resized_image)
 
@@ -197,7 +196,7 @@ class Menu_Pedidos(tk.Frame):
             new_image_menu = fit_image_to_window(image_path, (event.width, event.height))
             background_label_menu.pack(fill=BOTH, expand = YES)
             background_label_menu.config(image=new_image_menu)
-            background_label_menu.image = new_image_menu  # Avoid garbage collection
+            background_label_menu.image = new_image_menu  # Pra evitar acumulo de lixo
 
         image_path="/home/stella/Downloads/cafeteria(2).jpg"
 
@@ -680,7 +679,7 @@ class Menu_Pedidos(tk.Frame):
             label_cardapio.config(text='BEBIDAS')
 
 
-# Pagar window frame
+# 'Pagar' window frame
 class Pagar(tk.Frame):
     def __init__(self, parent, controller): 
         tk.Frame.__init__(self, parent)
@@ -694,17 +693,17 @@ class Pagar(tk.Frame):
         self.grid_columnconfigure(0, weight=1)
         
         def fit_image_to_window(image_path, window_size):
-            # Load the image
+            # Carrega a imagem
             image_menu=Image.open(image_path)
             image_width, image_height = image_menu.size
             
-            # Calculate the aspect ratio
+            # Calcula o aspect ratio
             aspect_ratio = image_width / image_height
             
-            # Get the window size
+            # Pega o tamanho da janela
             window_width, window_height = window_size
             
-            # Calculate new size keeping the aspect ratio
+            # Calcula novo tamanho com o emsmo aspect ratio
             if (window_width / window_height) > aspect_ratio:
                 new_width = int(window_height * aspect_ratio)
                 new_height = window_height
@@ -713,7 +712,7 @@ class Pagar(tk.Frame):
                 new_height = int(window_width / aspect_ratio)
         
 
-            # Resize the image
+            # Reescala a imagem
             resized_image = image_menu.resize((new_width, new_height), Image.LANCZOS)
             return ImageTk.PhotoImage(resized_image)
 
@@ -721,7 +720,7 @@ class Pagar(tk.Frame):
             new_image_menu = fit_image_to_window(image_path, (event.width, event.height))
             background_label_menu.pack(fill=BOTH, expand = YES)
             background_label_menu.config(image=new_image_menu)
-            background_label_menu.image = new_image_menu  # Avoid garbage collection
+            background_label_menu.image = new_image_menu  # Pra evitar acumulo de lixo
 
         image_path="/home/stella/Downloads/cafeteria(2).jpg"
 
@@ -752,7 +751,7 @@ class Pagar(tk.Frame):
         label_valor_final = tk.Label(frame_pagar, text=(' Total: %.2f ' % valor_total), font = ('calibre',20, 'bold'), bg='#CE724B', fg = "#FFD1BE")
         label_valor_final.pack(side='bottom', pady=4)
 
-# Obrigada window frame
+# 'Obrigada' window frame
 class Obrigada(tk.Frame):
     def __init__(self, parent, controller): 
         tk.Frame.__init__(self, parent)
@@ -764,24 +763,24 @@ class Obrigada(tk.Frame):
         self.grid_columnconfigure(0, weight=1)
 
         def fit_image_to_window(image_path, window_size):
-            # Load the image
+            # Carrega a imagem
             image_menu=Image.open(image_path)
             image_width, image_height = image_menu.size
             
-            # Calculate the aspect ratio
+            # Calcula o aspect ratio
             aspect_ratio = image_width / image_height
             
-            # Get the window size
+            # Pega o tamanho da janela
             window_width, window_height = window_size
             
-            # Calculate new size keeping the aspect ratio
+            # Calcula novo tamanho com o emsmo aspect ratio
             if (window_width / window_height) > aspect_ratio:
                 new_width = int(window_height * aspect_ratio)
                 new_height = window_height
             else:
                 new_width = window_width
                 new_height = int(window_width / aspect_ratio)
-            # Resize the image
+            # Reescala a imagem
             resized_image = image_menu.resize((new_width, new_height), Image.LANCZOS)
             return ImageTk.PhotoImage(resized_image)
 
@@ -789,7 +788,7 @@ class Obrigada(tk.Frame):
             new_image_menu = fit_image_to_window(image_path, (event.width, event.height))
             background_label_menu.pack(fill=BOTH, expand = YES)
             background_label_menu.config(image=new_image_menu)
-            background_label_menu.image = new_image_menu  # Avoid garbage collection
+            background_label_menu.image = new_image_menu  # Pra evitar acumulo de lixo
 
         image_path="/home/stella/Downloads/cafeteria(2).png"
 
@@ -804,6 +803,6 @@ class Obrigada(tk.Frame):
         command = lambda : controller.show_frame(Inserir_Nome))
         inicio_btn.place(anchor='center', relx=0.5, rely=0.9)
         
-# Driver Code
+# Código 'main'
 app = tkinterApp()
 app.mainloop()
